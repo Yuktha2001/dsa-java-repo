@@ -1,0 +1,262 @@
+Arrays in Java – Complete Guide
+1. What is an Array?
+An array is a fixed-size, ordered collection of elements of the same data type, stored in contiguous memory locations. Instead of declaring separate variables for each value, you group them under one name and access each by its index.
+
+2. Key Characteristics
+
+Fixed size – once created, the size cannot change
+Zero-indexed – first element is at index 0
+Same type – all elements must be the same data type
+Object in Java – arrays are objects and live on the heap
+
+
+3. Declaration
+java// Syntax: dataType[] arrayName;
+int[] numbers;
+String[] names;
+double[] prices;
+
+// Old C-style (valid but not preferred)
+int numbers[];
+
+4. Creation (Memory Allocation)
+java// Syntax: arrayName = new dataType[size];
+numbers = new int[5];      // creates array of 5 integers, all initialized to 0
+
+// Declaration + Creation in one line
+int[] scores = new int[10];
+String[] cities = new String[3];   // initialized to null
+boolean[] flags = new boolean[4];  // initialized to false
+Default Values After Creation
+TypeDefault Valueint, long, short, byte0float, double0.0booleanfalsechar'\u0000'Object (String, etc.)null
+
+5. Initialization
+java// Method 1: Assign values one by one
+int[] nums = new int[3];
+nums[0] = 10;
+nums[1] = 20;
+nums[2] = 30;
+
+// Method 2: Array literal (most common)
+int[] nums = {10, 20, 30, 40, 50};
+
+// Method 3: new keyword with values
+int[] nums = new int[]{10, 20, 30};
+
+6. Accessing Elements
+javaint[] arr = {10, 20, 30, 40, 50};
+
+System.out.println(arr[0]);  // 10  → first element
+System.out.println(arr[4]);  // 50  → last element
+System.out.println(arr[2]);  // 30  → middle element
+
+// Modify an element
+arr[1] = 99;
+System.out.println(arr[1]);  // 99
+
+7. Array Length
+javaint[] arr = {10, 20, 30, 40, 50};
+System.out.println(arr.length);  // 5  (NOT a method, it's a property)
+
+// Last element using length
+System.out.println(arr[arr.length - 1]);  // 50
+
+⚠️ Note: arr.length (no parentheses) — unlike String.length()
+
+
+8. Traversing an Array
+Using for loop
+javaint[] arr = {10, 20, 30, 40, 50};
+
+for (int i = 0; i < arr.length; i++) {
+    System.out.println("arr[" + i + "] = " + arr[i]);
+}
+Using enhanced for-each loop
+javafor (int value : arr) {
+    System.out.println(value);
+}
+Using while loop
+javaint i = 0;
+while (i < arr.length) {
+    System.out.println(arr[i]);
+    i++;
+}
+
+9. Common Array Operations
+Find Sum & Average
+javaint[] arr = {10, 20, 30, 40, 50};
+int sum = 0;
+
+for (int x : arr) sum += x;
+
+double avg = (double) sum / arr.length;
+System.out.println("Sum: " + sum);      // 150
+System.out.println("Average: " + avg);  // 30.0
+Find Max & Min
+javaint[] arr = {3, 7, 1, 9, 4};
+int max = arr[0], min = arr[0];
+
+for (int x : arr) {
+    if (x > max) max = x;
+    if (x < min) min = x;
+}
+System.out.println("Max: " + max);  // 9
+System.out.println("Min: " + min);  // 1
+Reverse an Array
+javaint[] arr = {1, 2, 3, 4, 5};
+int left = 0, right = arr.length - 1;
+
+while (left < right) {
+    int temp = arr[left];
+    arr[left] = arr[right];
+    arr[right] = temp;
+    left++;
+    right--;
+}
+// arr is now {5, 4, 3, 2, 1}
+Linear Search
+javaint[] arr = {10, 25, 30, 45, 50};
+int target = 30;
+int index = -1;
+
+for (int i = 0; i < arr.length; i++) {
+    if (arr[i] == target) {
+        index = i;
+        break;
+    }
+}
+System.out.println("Found at index: " + index);  // 2
+
+10. Copying Arrays
+javaint[] original = {1, 2, 3, 4, 5};
+
+// Method 1: Manual copy
+int[] copy1 = new int[original.length];
+for (int i = 0; i < original.length; i++)
+    copy1[i] = original[i];
+
+// Method 2: System.arraycopy()
+int[] copy2 = new int[5];
+System.arraycopy(original, 0, copy2, 0, 5);
+//              (src, srcPos, dest, destPos, length)
+
+// Method 3: Arrays.copyOf()
+import java.util.Arrays;
+int[] copy3 = Arrays.copyOf(original, original.length);
+
+// Method 4: Arrays.copyOfRange()
+int[] copy4 = Arrays.copyOfRange(original, 1, 4); // {2, 3, 4}
+
+⚠️ Shallow copy warning: int[] copy = original; does NOT copy — both variables point to the same array!
+
+
+11. Sorting Arrays
+javaimport java.util.Arrays;
+
+int[] arr = {5, 3, 8, 1, 2};
+
+// Sort ascending
+Arrays.sort(arr);
+System.out.println(Arrays.toString(arr));  // [1, 2, 3, 5, 8]
+
+// Sort a range: sort only index 1 to 3
+Arrays.sort(arr, 1, 4);
+
+12. The Arrays Utility Class
+javaimport java.util.Arrays;
+
+int[] arr = {5, 2, 8, 1};
+
+Arrays.sort(arr);                            // sort
+Arrays.toString(arr);                        // "[1, 2, 5, 8]"  (for printing)
+Arrays.fill(arr, 7);                         // fill all with 7 → {7,7,7,7}
+Arrays.copyOf(arr, 6);                       // copy & resize
+Arrays.binarySearch(arr, 5);                 // fast search (array must be sorted)
+Arrays.equals(arr1, arr2);                   // compare two arrays
+
+13. 2D Arrays (Matrix)
+java// Declaration & Creation
+int[][] matrix = new int[3][3];   // 3 rows, 3 columns
+
+// Initialization
+int[][] matrix = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+// Access element
+System.out.println(matrix[1][2]);  // 6  (row 1, col 2)
+
+// Traverse 2D array
+for (int i = 0; i < matrix.length; i++) {          // rows
+    for (int j = 0; j < matrix[i].length; j++) {   // columns
+        System.out.print(matrix[i][j] + " ");
+    }
+    System.out.println();
+}
+
+14. Jagged Arrays (Irregular 2D Arrays)
+java// Each row can have a different number of columns
+int[][] jagged = new int[3][];
+jagged[0] = new int[2];   // row 0 has 2 elements
+jagged[1] = new int[4];   // row 1 has 4 elements
+jagged[2] = new int[3];   // row 2 has 3 elements
+
+// Or directly:
+int[][] jagged = {
+    {1, 2},
+    {3, 4, 5, 6},
+    {7, 8, 9}
+};
+
+15. Arrays as Method Parameters & Return Values
+java// Passing array to a method
+public static void printArray(int[] arr) {
+    for (int x : arr) System.out.print(x + " ");
+}
+
+// Returning array from a method
+public static int[] getArray() {
+    return new int[]{1, 2, 3};
+}
+
+// Usage
+int[] arr = {10, 20, 30};
+printArray(arr);             // 10 20 30
+
+int[] result = getArray();
+
+Arrays are passed by reference — changes inside the method affect the original array.
+
+
+16. ArrayIndexOutOfBoundsException
+javaint[] arr = {1, 2, 3};
+
+// ❌ This throws ArrayIndexOutOfBoundsException
+System.out.println(arr[5]);  // index 5 doesn't exist!
+System.out.println(arr[-1]); // negative index is invalid
+
+// ✅ Always stay within bounds: 0 to arr.length - 1
+```
+
+---
+
+## 17. Array vs ArrayList – Quick Comparison
+
+| Feature | Array | ArrayList |
+|---------|-------|-----------|
+| Size | Fixed | Dynamic |
+| Type | Primitive + Object | Object only |
+| Performance | Faster | Slightly slower |
+| Methods | Limited (`Arrays.*`) | Rich built-in methods |
+| Syntax | `int[] arr` | `ArrayList<Integer>` |
+
+---
+
+## Summary – The Big Picture
+```
+Declare → Create → Initialize → Access → Operate → Pass/Return
+  ↓           ↓         ↓          ↓         ↓           ↓
+int[] a   new int[5]  a[0]=1    a[0]    sort/search  methods
+Master these concepts and you'll have a rock-solid foundation for data structures, algorithms, and Java development!Sonnet 4.6Claude is AI an
