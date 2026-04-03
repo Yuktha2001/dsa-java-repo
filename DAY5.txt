@@ -1,0 +1,359 @@
+
+What is Logic Building?
+Logic building is the ability to break a problem into small steps and instruct a computer to solve it. It's the foundation of programming — before writing code, you need to think like a machine: step by step, with no assumptions.
+
+The core topics every beginner must master are shown in the roadmap below:
+Logic building roadmap — Java beginners
+1. Variables & data types
+int, double, char, boolean, String
+2. Operators
+Arithmetic, relational, logical
+3. Conditionals
+if, if-else, switch
+4. Loops
+for, while, do-while
+5. Pattern programs
+Nested loops, stars, numbers
+6. Arrays
+1D, 2D, traversal, sorting
+7. Methods / functions
+Parameters, return values
+8. Strings
+length, charAt, reverse, compare
+9. Recursion
+Base case, factorial, fibonacci
+
+
+
+Now let's go through every topic with a clear explanation and Java program.
+
+1. Variables & Data Types
+A variable is a named box in memory that stores a value. A data type tells Java what kind of value it holds.
+
+Type	What it stores	Example
+int	Whole numbers	int age = 20;
+double	Decimal numbers	double pi = 3.14;
+char	Single character	char grade = 'A';
+boolean	True or false	boolean pass = true;
+String	Text	String name = "Ravi";
+java
+public class Variables {
+    public static void main(String[] args) {
+        int age = 20;
+        double height = 5.9;
+        char grade = 'A';
+        boolean isStudent = true;
+        String name = "Ravi";
+
+        System.out.println("Name   : " + name);
+        System.out.println("Age    : " + age);
+        System.out.println("Height : " + height);
+        System.out.println("Grade  : " + grade);
+        System.out.println("Student: " + isStudent);
+    }
+}
+2. Operators
+Operators perform operations on variables.
+
+Arithmetic: +  -  *  /  % (% gives remainder)
+Relational: ==  !=  >  <  >=  <= (result is true/false)
+Logical: && (AND), || (OR), ! (NOT)
+java
+public class Operators {
+    public static void main(String[] args) {
+        int a = 10, b = 3;
+
+        System.out.println("Add      : " + (a + b));   // 13
+        System.out.println("Subtract : " + (a - b));   // 7
+        System.out.println("Multiply : " + (a * b));   // 30
+        System.out.println("Divide   : " + (a / b));   // 3
+        System.out.println("Remainder: " + (a % b));   // 1
+
+        System.out.println("a > b    : " + (a > b));   // true
+        System.out.println("a == b   : " + (a == b));  // false
+
+        boolean x = true, y = false;
+        System.out.println("AND: " + (x && y));        // false
+        System.out.println("OR : " + (x || y));        // true
+        System.out.println("NOT: " + (!x));            // false
+    }
+}
+3. Conditionals (if / else / switch)
+Conditionals let your program make decisions based on conditions.
+
+java
+import java.util.Scanner;
+
+public class Conditionals {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your marks: ");
+        int marks = sc.nextInt();
+
+        // if-else chain
+        if (marks >= 90) {
+            System.out.println("Grade: A");
+        } else if (marks >= 75) {
+            System.out.println("Grade: B");
+        } else if (marks >= 60) {
+            System.out.println("Grade: C");
+        } else if (marks >= 35) {
+            System.out.println("Grade: D");
+        } else {
+            System.out.println("Grade: F (Fail)");
+        }
+
+        // switch example
+        int day = 3;
+        switch (day) {
+            case 1: System.out.println("Monday");    break;
+            case 2: System.out.println("Tuesday");   break;
+            case 3: System.out.println("Wednesday"); break;
+            default: System.out.println("Other day");
+        }
+    }
+}
+4. Loops
+Loops repeat a block of code multiple times. This is the most important topic for logic building.
+
+java
+public class Loops {
+    public static void main(String[] args) {
+
+        // for loop — when you know how many times
+        System.out.println("--- for loop ---");
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Count: " + i);
+        }
+
+        // while loop — when condition is checked first
+        System.out.println("--- while loop ---");
+        int n = 1;
+        while (n <= 5) {
+            System.out.println("n = " + n);
+            n++;
+        }
+
+        // do-while — runs at least once before checking
+        System.out.println("--- do-while loop ---");
+        int x = 1;
+        do {
+            System.out.println("x = " + x);
+            x++;
+        } while (x <= 5);
+
+        // Sum of first 10 natural numbers
+        int sum = 0;
+        for (int i = 1; i <= 10; i++) sum += i;
+        System.out.println("Sum 1-10 = " + sum); // 55
+    }
+}
+5. Pattern Programs (Nested Loops)
+Patterns train you to think with nested loops — the outer loop controls rows, the inner controls columns.
+
+java
+public class Patterns {
+    public static void main(String[] args) {
+        int rows = 5;
+
+        // Pattern 1: Right-angle star triangle
+        System.out.println("--- Right triangle ---");
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+
+        // Pattern 2: Number triangle
+        System.out.println("--- Number triangle ---");
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+
+        // Pattern 3: Inverted triangle
+        System.out.println("--- Inverted triangle ---");
+        for (int i = rows; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+Output of Pattern 1:
+
+*
+* *
+* * *
+* * * *
+* * * * *
+6. Arrays
+An array stores multiple values of the same type in a single variable.
+
+java
+public class Arrays {
+    public static void main(String[] args) {
+
+        // Declaration and initialization
+        int[] marks = {85, 92, 78, 96, 70};
+
+        // Traverse and print
+        System.out.println("All marks:");
+        for (int i = 0; i < marks.length; i++) {
+            System.out.println("Student " + (i+1) + ": " + marks[i]);
+        }
+
+        // Find max and min
+        int max = marks[0], min = marks[0];
+        for (int m : marks) {  // enhanced for loop
+            if (m > max) max = m;
+            if (m < min) min = m;
+        }
+        System.out.println("Highest: " + max);
+        System.out.println("Lowest : " + min);
+
+        // Sum and average
+        int sum = 0;
+        for (int m : marks) sum += m;
+        double avg = (double) sum / marks.length;
+        System.out.println("Average: " + avg);
+
+        // 2D array (matrix)
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        System.out.println("Matrix:");
+        for (int[] row : matrix) {
+            for (int val : row) System.out.print(val + " ");
+            System.out.println();
+        }
+    }
+}
+7. Methods (Functions)
+A method is a reusable block of code with a name. It avoids repeating code and makes programs organized.
+
+java
+public class Methods {
+
+    // Method that takes input and returns a value
+    static int add(int a, int b) {
+        return a + b;
+    }
+
+    // Method to check if a number is prime
+    static boolean isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    // Method to find factorial
+    static long factorial(int n) {
+        long result = 1;
+        for (int i = 1; i <= n; i++) result *= i;
+        return result;
+    }
+
+    // Void method — does something, returns nothing
+    static void greet(String name) {
+        System.out.println("Hello, " + name + "!");
+    }
+
+    public static void main(String[] args) {
+        greet("Ravi");
+        System.out.println("3 + 4 = " + add(3, 4));
+        System.out.println("7 is prime? " + isPrime(7));
+        System.out.println("5! = " + factorial(5));
+
+        // Print all primes up to 50 using method
+        System.out.print("Primes up to 50: ");
+        for (int i = 2; i <= 50; i++) {
+            if (isPrime(i)) System.out.print(i + " ");
+        }
+    }
+}
+8. Strings
+Strings are sequences of characters. Java has many built-in methods to work with them.
+
+java
+public class StringOps {
+    public static void main(String[] args) {
+        String s = "Hello World";
+
+        System.out.println("Length  : " + s.length());           // 11
+        System.out.println("Upper   : " + s.toUpperCase());      // HELLO WORLD
+        System.out.println("Lower   : " + s.toLowerCase());      // hello world
+        System.out.println("CharAt 0: " + s.charAt(0));          // H
+        System.out.println("Contains: " + s.contains("World"));  // true
+        System.out.println("Replace : " + s.replace("World","Java")); // Hello Java
+        System.out.println("Substring: " + s.substring(6));      // World
+
+        // Reverse a string manually
+        String rev = "";
+        for (int i = s.length() - 1; i >= 0; i--) {
+            rev += s.charAt(i);
+        }
+        System.out.println("Reversed: " + rev);
+
+        // Palindrome check
+        String word = "madam";
+        String reversed = new StringBuilder(word).reverse().toString();
+        if (word.equals(reversed)) {
+            System.out.println(word + " is a palindrome");
+        }
+
+        // Count vowels
+        int count = 0;
+        for (char c : s.toLowerCase().toCharArray()) {
+            if ("aeiou".indexOf(c) != -1) count++;
+        }
+        System.out.println("Vowels in \"" + s + "\": " + count);
+    }
+}
+9. Recursion
+Recursion means a method calls itself. Every recursive function needs:
+
+A base case — where it stops
+A recursive case — where it calls itself with a smaller problem
+java
+public class Recursion {
+
+    // Factorial: n! = n × (n-1)!
+    static long factorial(int n) {
+        if (n == 0 || n == 1) return 1;  // base case
+        return n * factorial(n - 1);     // recursive case
+    }
+
+    // Fibonacci: 0 1 1 2 3 5 8 13 ...
+    static int fibonacci(int n) {
+        if (n <= 1) return n;            // base case
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+
+    // Sum of digits: 123 → 1+2+3 = 6
+    static int sumDigits(int n) {
+        if (n == 0) return 0;
+        return (n % 10) + sumDigits(n / 10);
+    }
+
+    // Power: base^exp
+    static double power(double base, int exp) {
+        if (exp == 0) return 1;
+        return base * power(base, exp - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("5!      = " + factorial(5));     // 120
+        System.out.println("Fib(7)  = " + fibonacci(7));    // 13
+        System.out.println("Digits  = " + sumDigits(123));  // 6
+        System.out.println("2^10    = " + (int)power(2,10));// 1024
+
+        // Fibonacci series first 10 terms
+        System.out.print("Fibonacci: ");
+        for (int i = 0; i < 10; i++) System.out.print(fibonacci(i) + " ");
+    }
+}
