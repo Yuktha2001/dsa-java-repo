@@ -1,0 +1,68 @@
+1. Introduction to DSA
+DSA stands for Data Structures and Algorithms — the two core pillars of computer science that determine how data is organized and how problems are solved efficiently.
+A data structure is a way of organizing and storing data so it can be accessed and modified efficiently. Examples include arrays, linked lists, stacks, queues, trees, and graphs.
+An algorithm is a step-by-step procedure to solve a problem. Searching, sorting, pathfinding — all of these are algorithms operating on data structures.
+Why does DSA matter?
+Every software application — from Google Search to your bank's mobile app — depends on smart data organization and efficient algorithms under the hood. DSA skills help you write code that doesn't just "work," but works fast and at scale. It is also the single most tested subject in coding interviews at top tech companies.
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.25s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+VvisualizeVvisualize show_widget
+2. Time Complexity
+Time complexity measures how the runtime of an algorithm grows as the input size n increases. It doesn't measure actual seconds — it measures the rate of growth of operations.
+We express this using three notations:
+Big-O (O) — Upper bound (Worst case)
+This is the most commonly used notation. It answers: "In the worst possible situation, how slow can this get?" If an algorithm is O(n²), we guarantee it won't grow worse than n².
+Big-Omega (Ω) — Lower bound (Best case)
+This answers: "In the best possible situation, how fast can this be?" For example, searching a sorted array and finding the element at position 0 is Ω(1).
+Big-Theta (Θ) — Tight bound (Average/Exact case)
+This says the algorithm is both O(f(n)) and Ω(f(n)) — the upper and lower bounds match. It gives the most precise description of an algorithm's growth.
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.25s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+VvisualizeVvisualize show_widgetHere's a breakdown of the most important complexities from best to worst:
+NotationNameExampleO(1)ConstantArray index accessO(log n)LogarithmicBinary searchO(n)LinearLinear searchO(n log n)Log-linearMerge sort, Heap sortO(n²)QuadraticBubble sort, nested loopsO(2ⁿ)ExponentialRecursive FibonacciO(n!)FactorialTraveling salesman (brute force)
+A practical example — searching for a number in an array of 1 million elements:
+
+Linear Search (O(n)): up to 1,000,000 comparisons
+Binary Search (O(log n)): at most ~20 comparisons
+
+That's the power of understanding time complexity.
+
+3. Space Complexity
+Space complexity measures how much memory an algorithm uses relative to input size n. It includes two components:
+Auxiliary space — the extra memory the algorithm itself needs (variables, stacks, temporary arrays), excluding the input.
+Total space — auxiliary space + the space taken by the input itself.
+Usually when we say "space complexity," we mean auxiliary space.
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.25s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+VvisualizeVvisualize show_widgetKey space complexity cases with code examples:
+O(1) — Constant space — only a few fixed variables used, no matter how large the input.
+pythondef sum_array(arr):
+    total = 0          # just one variable
+    for x in arr:
+        total += x
+    return total
+O(n) — Linear space — creating a new array proportional to input size.
+pythondef double_array(arr):
+    result = []        # new array of size n
+    for x in arr:
+        result.append(x * 2)
+    return result
+O(log n) — Log space — recursive algorithms like binary search use a call stack that grows logarithmically.
+O(n²) — Quadratic space — creating an n×n matrix (like in dynamic programming or graph adjacency matrices).
+
+Quick Summary
+ConceptWhat it measuresNotation usedTime ComplexityHow runtime grows with input sizeO, Ω, ΘSpace ComplexityHow memory usage grows with input sizeO, Ω, ΘBig-OWorst case upper boundMost commonly usedBig-ΩBest case lower boundTheoretical analysisBig-ΘExact / tight boundWhen both bounds match
+The golden rule: Always aim for the lowest time and space complexity possible. When forced to trade off, it usually depends on the problem — sometimes you trade extra memory to gain speed (memoization), and sometimes you trade speed to save memory.
+Want me to go deeper into any specific complexity class, or move on to a specific data structure like arrays, linked lists, or trees?Want to be notified when Claude responds?Notify Sonnet 4.6Claude is AI and can ma
